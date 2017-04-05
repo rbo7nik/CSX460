@@ -24,8 +24,15 @@ Write a function (f) that takes a vector of numbers, **x**, and returns a vector
 ```{r}
 f <- function(x) {
   
-  # ...
-  
+  # The for loop wil execute 4 times, appending 
+  # the product of all the elements of x, except
+  # it's current index. I achieved that by using
+  # the negative index notation, which returns
+  # all the elements but the negative index
+  for(i in 1:length(x)) {
+    m[i] = prod(x[-i])
+  }
+  m 
 }
 
 ```
@@ -51,6 +58,11 @@ Write a function f(x) to accept an integer vector, and returns a vector with tho
 ```{r}
 f <- function(x) {
   # ...
-  
+ for (i in 1:100) {
+ if (i %% 3 == 0 & i %% 5 == 0) {print("FizzBuzz")}
+ else if (i %% 3 == 0) {print("Fizz")}
+ else if (i %% 5 == 0) {print("Buzz")}
+ else print(i)
+} 
 }
 ```
