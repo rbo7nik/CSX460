@@ -1,6 +1,6 @@
 ---
 title: "Assingment NYC Flight Data"
-author: "Your Name Here"
+author: "Nikolai Litavr"
 date: "October 5, 2016"
 output: html_document
 ---
@@ -24,8 +24,14 @@ Put code in each of the sections provided.
 Using the `readr` package read the `flights` data.
 
 ```{r}
+library(readr)
 
+setwd("~/mycode/csx460/02-building-blocks/02-exercise-nycflights/data/")
 
+airports <- read_csv("airports.csv")
+flights <- read_csv("flights.csv")
+planes <- read_csv("planes.csv")
+weather <- read_csv("weather.csv")
 ```
 
 ## Numeric Variables  
@@ -33,7 +39,11 @@ Using the `readr` package read the `flights` data.
 Plot a histogram of arrival delays and departure delays 
 
 ```{r}
-
+library(ggplot2)
+arrivalDelays <- qplot(flights$arr_delay, geom="histogram", main="Arrival Delays for NYC flights", xlab = "Arrival Delay in Minutes", ylab = "Count", binwidth = 100, ylim = c(0, 300000))
+arrivalDelays
+departureDelays <- qplot(flights$dep_delay, geom="histogram", main="Departure Delays for NYC flights", xlab = "Departure Delays in Minutes", ylab = "Count", binwidth = 100)
+departureDelays
 ```
 
 ## Scatterplot
@@ -41,7 +51,9 @@ Plot a histogram of arrival delays and departure delays
 Plot a scatterplot of date vs arrival delay 
 
 ```{r}
-
+flights$date <- as.Date(with(flights, paste(year, month, day,sep="-")), "%Y-%m-%d")
+scatterPlot <- qplot(date, xlab = "Date", ylab = "Arrival Delay")
+scatterPlot
 ```
 
 
@@ -51,8 +63,8 @@ Plot a scatterplot of date vs arrival delay
 Create a `table`, counting the flights by origin airports and carrier.
 
 ```{r}
-
-
+flightsTbl <- count(flights, c('origin', 'carrier'))
+flightsTbl
 ```
 
 
