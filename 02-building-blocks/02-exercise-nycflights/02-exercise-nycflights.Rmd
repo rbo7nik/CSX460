@@ -54,6 +54,8 @@ Plot a scatterplot of date vs arrival delay
 flights$date <- as.Date(with(flights, paste(year, month, day,sep="-")), "%Y-%m-%d")
 scatterPlot <- qplot(date, xlab = "Date", ylab = "Arrival Delay")
 scatterPlot
+
+# Spent a lot of time this week because I was behind the reading, and also behind on taxes >.<
 ```
 
 
